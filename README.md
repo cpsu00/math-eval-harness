@@ -187,12 +187,11 @@ Following [MM-RLHF](https://github.com/Kwai-YuanQi/MM-RLHF). See [this document]
 If you find our model/code/data/paper helpful, please consider citing our papers 📝 and starring us ⭐️！
 
 ```bibtex
-@inproceedings{peng2026unidpo,
-  title     = {Uni-{DPO}: A Unified Paradigm for Dynamic Preference Optimization of {LLM}s},
-  author    = {Shangpin Peng and Weinong Wang and Zhuotao Tian and Senqiao Yang and Xing W and Haotian Xu and Chengquan Zhang and Takashi Isobe and Baotian Hu and Min Zhang},
-  booktitle = {The Fourteenth International Conference on Learning Representations},
-  year      = {2026},
-  url       = {https://openreview.net/forum?id=G7DBGlgjjp}
+@article{Uni_DPO_2025,
+  title   = {{Uni-DPO}: A Unified Paradigm for Dynamic Preference Optimization of {LLMs}},
+  author  = {Peng, Shangpin and Wang, Weinong and Tian, Zhuotao and Yang, Senqiao and Wu, Xing and Xu, Haotian and Zhang, Chengquan and Isobe, Takashi and Hu, Baotian and Zhang, Min},
+  journal = {arXiv preprint arXiv:2506.10054},
+  year    = {2025}
 }
 ```
 
