@@ -61,7 +61,7 @@ CUDA_VISIBLE_DEVICES=0 python scripts/math_eval.py \
 
 ### Pre-trained base model (gemma-3-4b-pt)
 
-> Note: base models perform much better with few-shot. 0-shot CoT significantly underestimates capability.
+> Note: base models score very low with 0-shot CoT since they don't follow the `\boxed{}` output format. The official report uses 8-shot for PT models (38.4% GSM8K). Add `--num_shots 8` for a fairer comparison.
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python scripts/math_eval.py \
@@ -102,24 +102,28 @@ CUDA_VISIBLE_DEVICES=0 python scripts/math_eval.py \
 
 ## Benchmark Results
 
-### Gemma 3 4B-IT (0-shot CoT, apply_chat_template, max_tokens=3000)
+### Gemma 3 4B — IT vs PT (0-shot CoT, max_tokens=3000)
 
-| Model | GSM8K | MATH-500 | MATH (full) | AIME24 |
+| Model | GSM8K | MATH-500 | MATH (full 5k) | AIME24 |
 |---|---|---|---|---|
-| Gemma 3 4B-IT | 88.9% | 74.2% | 75.4% | 6.7% |
+| **Gemma 3 4B-IT** | **88.9%** | **74.2%** | **75.4%** | **6.7%** |
+| Gemma 3 4B-PT (0-shot) | 10.3% | 9.0% | 9.1% | 0.0% |
 | Gemma 3 4B-IT (official report) | 89.2% | ~75.6% | 75.6% | — |
+| Gemma 3 4B-PT (official, 8-shot) | 38.4% | 24.2% | — | — |
 
-### MATH-500 by Subject — Gemma 3 4B-IT
+> PT model 0-shot is expected to be low — base models need few-shot examples to learn the answer format.
 
-| Subject | Acc |
-|---|---|
-| Algebra | 93.5% |
-| Number Theory | 85.5% |
-| Prealgebra | 80.5% |
-| Counting & Probability | 76.3% |
-| Geometry | 56.1% |
-| Intermediate Algebra | 55.7% |
-| Precalculus | 53.6% |
+### MATH (full 5k) by Subject — Gemma 3 4B-IT vs PT
+
+| Subject | IT | PT (0-shot) |
+|---|---|---|
+| Algebra | 91.2% | 11.8% |
+| Prealgebra | 85.4% | 15.3% |
+| Number Theory | 81.1% | 7.2% |
+| Counting & Probability | 72.6% | 7.6% |
+| Geometry | 66.4% | 7.7% |
+| Intermediate Algebra | 58.5% | 5.4% |
+| Precalculus | 57.7% | 4.2% |
 
 ## Supported Datasets
 
